@@ -12,13 +12,12 @@ import { Location } from '@angular/common';
 })
 export class DishdetailComponent implements OnInit {
     dish: Dish;
-    constructor(private dishservice: DishService,
+    constructor(private dishService: DishService,
       private route: ActivatedRoute,
       private location: Location) { }  
     ngOnInit() {
       const id = this.route.snapshot.params['id'];
-      this.dishservice.getDish(id)
-      .then(dish => this.dish = dish)
+      this.dishService.getDish(id).subscribe(dish => this.dish = dish);
   }
 
   goBack(): void {
